@@ -18,7 +18,7 @@ export default class ReactAngular extends React.Component {
     const $rootScope = $injector.get('$rootScope');
     const $templateCache = $injector.get('$templateCache');
 
-    this.$scope = scope ? parentScope.$new(isolate) : parentScope;
+    this.$scope = angular.isObject(scope) ? scope.$new(isolate) : parentScope;
 
     if (angular.isObject(scope)) {
       angular.extend(this.$scope, scope);
